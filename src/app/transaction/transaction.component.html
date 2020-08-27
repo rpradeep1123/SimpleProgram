@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+        <th width="20%">Date</th>
+        <th width="30%">Description</th>
+        <th width="20%">Account</th>
+        <th width="15%">Debit</th>
+        <th width="15%">Credit</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactionList">
+            <td>{{transaction.date}}</td>
+            <td>{{transaction.description}}</td>
+            <td>{{transaction.account}}</td>
+            <td class="text-danger font-weight-bold">{{changeValue(transaction.debit)}}</td>
+            <td class="text-success font-weight-bold">{{transaction.credit}}</td>
+        </tr>
+    </tbody>
+</table>

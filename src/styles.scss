@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+.add-btn {
+    bottom: 2.25vw;
+    right: -2vw;
+    color: #2196f3;
+    cursor: pointer;
+}
+.table {
+    thead {
+        background-color: #2196f3;
+        color: white;
+    }
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgb(33 150 243 / 12%);
+}
