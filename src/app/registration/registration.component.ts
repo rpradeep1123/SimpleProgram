@@ -34,6 +34,6 @@ export class RegistrationComponent implements OnInit {
   }
   currentDate() {
     const currentDate = new Date();
-    return currentDate.toISOString().substring(0, 10);
+    return currentDate.toString();
   }
 }

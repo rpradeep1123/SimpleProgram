@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <h4>{{transactionList.length}} transactions</h4>
       <app-transaction [transactionList]="transactionList"></app-transaction>
       <div class="alert alert-info text-center" role="alert" *ngIf="transactionList.length==0">
         No Records
       </div>
       <app-registration (registerEvent)="addTransaction($event)"></app-registration>
     </div>
-    <div class="offset-10 col-2 text-center font-weight-bold">
+    <div class="col-12 bg-light text-right font-weight-bold">
       {{count}}
     </div>
   </div>

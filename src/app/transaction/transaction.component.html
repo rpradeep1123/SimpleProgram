@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let transaction of transactionList">
-            <td>{{transaction.date}}</td>
+            <td>{{transaction.date | date:'MMM dd, hh:mm a'}}</td>
             <td>{{transaction.description}}</td>
             <td>{{transaction.account}}</td>
             <td class="text-danger font-weight-bold">{{changeValue(transaction.debit)}}</td>
