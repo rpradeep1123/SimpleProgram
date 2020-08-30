@@ -1,35 +1,38 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RegistrationModel } from './model/registration-model';
 import { AppComponent } from './app.component';
-
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [AppComponent]
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
-
-  it(`should have as title 'SimpleProgram'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('SimpleProgram');
+  it('can load instance', () => {
+    expect(component).toBeTruthy();
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('SimpleProgram app is running!');
+  it(`title has default value`, () => {
+    expect(component.title).toEqual(`SimpleProgram`);
+  });
+  it(`transactionList has default value`, () => {
+    expect(component.transactionList).toEqual([]);
+  });
+  it(`count has default value`, () => {
+    expect(component.count).toEqual(0);
+  });
+  it(`added transaction`, () => {
+    let registration: RegistrationModel = {
+      account: 'Account',
+      amount: 524,
+      date: new Date(),
+      description: 'Description'
+    }
+    component.addTransaction(registration)
+    expect(component.transactionList.length).toEqual(1);
   });
 });

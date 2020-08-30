@@ -3,10 +3,10 @@
         <table class="table table-borderless">
             <tbody>
                 <tr [formGroup]="regForm">
-                    <td class="pl-0" width="20%"><input type="text" class="form-control" formControlName="date"></td>
-                    <td width="30%"><input type="text" class="form-control" formControlName="description"></td>
-                    <td width="20%"><input type="text" class="form-control" formControlName="account"></td>
-                    <td class="pr-0" width="30%"><input type="number" class="form-control" formControlName="amount"></td>
+                    <td class="pl-0" width="25%"><input type="text" class="form-control" formControlName="date" [ngClass]="{ 'is-invalid': regFormSubmitted && regForm.controls.date.errors }"></td>
+                    <td width="30%"><input type="text" class="form-control" formControlName="description" [ngClass]="{ 'is-invalid': regFormSubmitted && regForm.controls.description.errors }"></td>
+                    <td width="15%"><input type="text" class="form-control" formControlName="account" [ngClass]="{ 'is-invalid': regFormSubmitted && regForm.controls.account.errors }"></td>
+                    <td class="pr-0" width="30%"><input type="number" class="form-control" formControlName="amount" [ngClass]="{ 'is-invalid': regFormSubmitted && regForm.controls.amount.errors }"></td>
                 </tr>
             </tbody>
         </table>

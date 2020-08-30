@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationModel } from '../model/registration-model';
 
 @Component({
@@ -10,6 +10,7 @@ import { RegistrationModel } from '../model/registration-model';
 export class RegistrationComponent implements OnInit {
 
   regForm: FormGroup;
+  regFormSubmitted: boolean = false;
 
   @Output()
   registerEvent = new EventEmitter<RegistrationModel>();
@@ -18,18 +19,20 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.regForm = this.fb.group({
       date: [this.currentDate()],
-      description: [],
-      account: [],
-      amount: []
+      description: ['', Validators.required],
+      account: ['', Validators.required],
+      amount: ['', Validators.required]
     });
   }
   register() {
+    this.regFormSubmitted = true;
     if (this.regForm.valid) {
       this.registerEvent.emit(this.regForm.value);
       this.regForm.reset();
       this.regForm.patchValue({
         date: this.currentDate()
-      })
+      });
+      this.regFormSubmitted = false;
     }
   }
   currentDate() {
